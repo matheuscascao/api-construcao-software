@@ -33,9 +33,7 @@ class ContaCorrenteRepository {
 
   async update(
     id: number,
-    data: Partial<
-      Omit<ContaCorrente, 'id' | 'status_conta' | 'criado_em' | 'atualizado_em'>
-    >
+    data: Partial<Omit<ContaCorrente, 'id' | 'criado_em' | 'atualizado_em'>>
   ): Promise<ContaCorrente | null> {
     const result = await prisma.contaCorrente.update({
       where: { id },

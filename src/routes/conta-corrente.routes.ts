@@ -78,9 +78,10 @@ export async function contaCorrenteRoutes(fastify: FastifyInstance) {
     Body: {
       id: number;
       limite: number;
+      status_conta: 'ATIVA' | 'INATIVA';
     };
   }>('/', async (req, reply) => {
-    const { id, limite } = req.body;
+    const { id, limite, status_conta } = req.body;
     try {
       const data = await contaCorrenteService.update(id, { limite });
       return reply.send(data);

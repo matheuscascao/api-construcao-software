@@ -84,7 +84,7 @@ class ContaCorrenteService {
 
   public async update(
     id: number,
-    data: Partial<Pick<ContaCorrente, 'limite'>>
+    data: Partial<Pick<ContaCorrente, 'limite' | 'status_conta'>>
   ): Promise<ContaCorrente | null> {
     const result = await this.contaCorrenteRepository.update(id, data);
     return result;

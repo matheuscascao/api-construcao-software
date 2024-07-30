@@ -82,16 +82,18 @@ export async function contaInvestimentoRoutes(fastify: FastifyInstance) {
       tipo_investidor?: InvestidorTipo;
       cliente_id?: number;
       conta_corrente_id?: number;
+      status_conta: 'ATIVA' | 'INATIVA';
     };
     Params: {
       id: string;
     };
   }>('/:id', async (req, reply) => {
     const { id } = req.params;
-    const { tipo_investidor } = req.body;
+    const { tipo_investidor, status_conta } = req.body;
     try {
       const data = await contaInvestimentoService.update(Number(id), {
         tipo_investidor,
+        status_conta,
       });
       return reply.send(data);
     } catch (error) {
