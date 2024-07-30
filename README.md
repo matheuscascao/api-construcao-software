@@ -38,7 +38,16 @@ Além disso, o sistema registra de forma precisa todas as transações financeir
 *Configuração de ambiente:* 
  - Cada desenvolvedor usa seu próprio ambiente local com seu computador pessoal.
  - O código fonte é compartilhado entre os membros da equipe usando um repositório Git hospedado no GitHub.
- - Usaremos um arquivo .env para armazenar configurações específicas do ambiente local, como chaves de API e configurações de banco de dados.
+ - Utilizamos um arquivo .env para armazenar configurações específicas do ambiente local, como chaves de API e configurações de banco de dados.
+
+## Como executar o projeto
+* Primeiro, baixe o NodeJS na versão 22
+* Execute yarn install para instalar as dependências
+* Execute npm run dev para executar o projeto em modo de desenvolvimento
+
+## Setup banco de dados
+* Adicione uma conexão do banco de dados no .env, com a variável DATABASE_URL
+* Execute as migrations com o comando npx prisma migrate 
 
 ## Endpoints
 http://localhost:3100
