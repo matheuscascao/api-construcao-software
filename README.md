@@ -25,17 +25,15 @@ A gestão das contas é simplificada pela diferenciação entre contas correntes
 Além disso, o sistema registra de forma precisa todas as transações financeiras, fornecendo um histórico completo das atividades dos clientes. Transações como depósitos, saques, compras, vendas de investimentos e resgates são monitoradas em tempo real, promovendo transparência e controle financeiro. Eventos específicos relacionados a transações são automaticamente registrados, facilitando a monitoração, auditoria e conformidade regulatória, garantindo assim a integridade e segurança das operações financeiras.
 
 
-## [Historias de Usuario](arquivosDocumentacao/Histórias de usuário.pdf)
-
 ## Estratégia de controle de versão
 *Ferramenta Utilizada:* Git
 *Repositório:* GitHub
 
 *Práticas:*
 - *Branches:* 
-  - *main:* Branch principal para código pronto para produção.
+  - *main:* Única branch utilizada.
  - *Commits:* Fazer commits frequentes com mensagens claras e descritivas sobre as mudanças realizadas.
- - *Pull Requests (PRs):* Usar PRs para integrar mudanças de outras branches no main, garantindo que essas mudanças sejam revisadas por outros membros da equipe. 
+ - *TBD:* A estratégia utilizada foi uma versão simplista do trunk-based development. Por não ter a necessidade de versionamento ou integração entre diferentes times, optamos por não adotar o git flow.
 
 *Configuração de ambiente:* 
  - Cada desenvolvedor usa seu próprio ambiente local com seu computador pessoal.
