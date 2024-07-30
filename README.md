@@ -44,8 +44,7 @@ Além disso, o sistema registra de forma precisa todas as transações financeir
 * Primeiro, baixe o NodeJS na versão 22
 * Execute yarn install para instalar as dependências
 * Execute npm run dev para executar o projeto em modo de desenvolvimento
-
-## Setup banco de dados
+# Setup banco de dados
 * Adicione uma conexão do banco de dados no .env, com a variável DATABASE_URL
 * Execute as migrations com o comando npx prisma migrate 
 
