@@ -39,3 +39,18 @@ Além disso, o sistema registra de forma precisa todas as transações financeir
  - Cada desenvolvedor usa seu próprio ambiente local com seu computador pessoal.
  - O código fonte é compartilhado entre os membros da equipe usando um repositório Git hospedado no GitHub.
  - Usaremos um arquivo .env para armazenar configurações específicas do ambiente local, como chaves de API e configurações de banco de dados.
+
+## Endpoints
+http://localhost:3100
+### Clientes ###  
+
+*Get - FindAll - /clientes
+Retorno: [
+	{
+		"id": ,
+		"cpf": "",
+		"renda_estimada": 
+		"nome": ,
+		"data_nascimento": 
+	},
+]
