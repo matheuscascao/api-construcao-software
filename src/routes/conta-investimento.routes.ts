@@ -36,12 +36,12 @@ export async function contaInvestimentoRoutes(fastify: FastifyInstance) {
     const { conta_investimento_id, produto_financeiro_id, quantidade } =
       req.body;
     try {
-      await contaInvestimentoService.aplicaInvestimento({
+      const transacao = await contaInvestimentoService.aplicaInvestimento({
         conta_investimento_id,
         produto_financeiro_id,
         quantidade,
       });
-      return reply.send('Investimento aplicado com sucesso');
+      return reply.send(transacao);
     } catch (error) {
       reply.send(error);
     }

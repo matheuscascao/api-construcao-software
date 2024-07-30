@@ -25,7 +25,7 @@ class TransacaoService {
       contaCorrente,
       tipo_transacao
     );
-    if (!isTransacaoValidaLimite) throw new Error('Transação  por limite');
+    if (!isTransacaoValidaLimite) throw new Error('Limite insuficiente');
 
     const result = await this.transacaoRepository.create({
       conta_corrente_id,

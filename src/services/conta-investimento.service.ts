@@ -43,7 +43,7 @@ class ContaInvestimentoService {
     conta_investimento_id: number;
     produto_financeiro_id: number;
     quantidade: number;
-  }): Promise<void> {
+  }): Promise<TransacaoInvestimento> {
     const produtoFinanceiro = await this.ProdutoFinanceiroRepository.findById(
       produto_financeiro_id
     );
@@ -56,7 +56,7 @@ class ContaInvestimentoService {
         quantidade
       );
     if (!transacaoCountInvestimentoValida) {
-      throw new Error('ProdutoFinanceiro is not available');
+      throw new Error('Quantidade de cotas excede o limite');
     }
 
     const totalValue = quantidade * produtoFinanceiro?.preco_unitario;
@@ -72,11 +72,13 @@ class ContaInvestimentoService {
       tipo_transacao: 'SAIDA',
     });
 
-    await this.TransacaoInvestimentoRepository.create({
+    const transacaoInvestimento = this.TransacaoInvestimentoRepository.create({
       conta_investimento_id: conta_investimento_id,
       produto_financeiro_id: produto_financeiro_id,
       quantidade,
     });
+
+    return transacaoInvestimento;
   }
 
   private async getContaCorrenteId(
@@ -108,7 +110,7 @@ class ContaInvestimentoService {
     }
 
     if (
-      produtoFinanceiroTransacoesCount + quantidade >=
+      produtoFinanceiroTransacoesCount + quantidade >
       produtoFinanceiro?.quantidade_cotas
     ) {
       return false;
@@ -223,11 +225,10 @@ class ContaInvestimentoService {
     quantidadeDias: number
   ): number {
     const investmentValue = quantidade * precoUnitario;
-
+    if (quantidadeDias <= 0) return investmentValue;
     const valorAtual =
       investmentValue * Math.pow(1 + rentabilidadeAnual, quantidadeDias / 365);
 
-    console.log('Valor atual: ', valorAtual);
     return valorAtual;
   }
 
