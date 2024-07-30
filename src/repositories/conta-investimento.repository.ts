@@ -31,6 +31,22 @@ class ContaInvestimentoRepository {
     const result = await prisma.contaInvestimento.findMany();
     return result;
   }
+
+  async update(
+    id: number,
+    data: Partial<
+      Pick<
+        ContaInvestimento,
+        'tipo_investidor' | 'cliente_id' | 'conta_corrente_id'
+      >
+    >
+  ): Promise<ContaInvestimento | null> {
+    const result = await prisma.contaInvestimento.update({
+      where: { id },
+      data,
+    });
+    return result;
+  }
 }
 
 export default ContaInvestimentoRepository;

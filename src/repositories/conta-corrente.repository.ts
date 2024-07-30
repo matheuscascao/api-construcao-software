@@ -30,6 +30,19 @@ class ContaCorrenteRepository {
     const result = await prisma.contaCorrente.findMany();
     return result;
   }
+
+  async update(
+    id: number,
+    data: Partial<
+      Omit<ContaCorrente, 'id' | 'status_conta' | 'criado_em' | 'atualizado_em'>
+    >
+  ): Promise<ContaCorrente | null> {
+    const result = await prisma.contaCorrente.update({
+      where: { id },
+      data,
+    });
+    return result;
+  }
 }
 
 export default ContaCorrenteRepository;

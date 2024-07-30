@@ -81,6 +81,14 @@ class ContaCorrenteService {
       evento_transacao: 'DEPOSITO_CORRENTE',
     });
   }
+
+  public async update(
+    id: number,
+    data: Partial<Pick<ContaCorrente, 'limite'>>
+  ): Promise<ContaCorrente | null> {
+    const result = await this.contaCorrenteRepository.update(id, data);
+    return result;
+  }
 }
 
 export default ContaCorrenteService;

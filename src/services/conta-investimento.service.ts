@@ -282,6 +282,13 @@ class ContaInvestimentoService {
     const result = await this.ContaInvestimentoRepository.findMany();
     return result;
   }
+  public async update(
+    id: number,
+    data: Partial<Omit<ContaInvestimento, 'criado_em' | 'atualizado_em'>>
+  ): Promise<ContaInvestimento | null> {
+    const result = await this.ContaInvestimentoRepository.update(id, data);
+    return result;
+  }
 }
 
 export default ContaInvestimentoService;

@@ -73,4 +73,19 @@ export async function contaCorrenteRoutes(fastify: FastifyInstance) {
       reply.code(500).send({ error: err.message });
     }
   });
+
+  fastify.patch<{
+    Body: {
+      id: number;
+      limite: number;
+    };
+  }>('/', async (req, reply) => {
+    const { id, limite } = req.body;
+    try {
+      const data = await contaCorrenteService.update(id, { limite });
+      return reply.send(data);
+    } catch (error) {
+      reply.send(error);
+    }
+  });
 }
