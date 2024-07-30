@@ -40,13 +40,17 @@ Além disso, o sistema registra de forma precisa todas as transações financeir
  - O código fonte é compartilhado entre os membros da equipe usando um repositório Git hospedado no GitHub.
  - Utilizamos um arquivo .env para armazenar configurações específicas do ambiente local, como chaves de API e configurações de banco de dados.
 
-## Como executar o projeto
+### Como executar o projeto
+## Instale as depenências
 * Primeiro, baixe o NodeJS na versão 22
 * Execute yarn install para instalar as dependências
 * Execute npm run dev para executar o projeto em modo de desenvolvimento
-# Setup banco de dados
+### Setup banco de dados
 * Adicione uma conexão do banco de dados no .env, com a variável DATABASE_URL
-* Execute as migrations com o comando npx prisma migrate 
+* Execute as migrations com o comando npx prisma migrate
+### Utilização das rotas
+* Faça a instalação do Bruno (https://www.usebruno.com/)
+* Abra o Bruno e selecione a pasta bruno-api, na pasta do projeto, para ter acesso às rotas 
 
 ## Endpoints
 http://localhost:3100
