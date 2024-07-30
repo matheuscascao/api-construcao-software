@@ -42,9 +42,22 @@ class ContaCorrenteService {
     return result;
   }
 
-  public async findAll(): Promise<ContaCorrente[] | null> {
-    const result = await this.contaCorrenteRepository.findMany();
-    return result;
+  public async findAll(): Promise<
+    (ContaCorrente & { saldo: number })[] | null
+  > {
+    const contas = await this.contaCorrenteRepository.findMany();
+    if (!contas) {
+      return null;
+    }
+
+    const contasComSaldo = await Promise.all(
+      contas.map(async (conta) => {
+        const saldo = await this.transacaoRepository.calculaSaldo(conta.id);
+        return { ...conta, saldo };
+      })
+    );
+
+    return contasComSaldo;
   }
 
   public async transferirFundos({

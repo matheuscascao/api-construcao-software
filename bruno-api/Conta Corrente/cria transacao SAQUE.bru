@@ -1,7 +1,7 @@
 meta {
-  name: cria transacao
+  name: cria transacao SAQUE
   type: http
-  seq: 5
+  seq: 4
 }
 
 post {
@@ -13,7 +13,7 @@ post {
 body:json {
   {
     "conta_corrente_id": 13,
-    "valor": 600000,
-    "evento_transacao": "DEPOSITO_CORRENTE"
+    "valor": -900001,
+    "evento_transacao": "SAQUE_CORRENTE"
   }
 }

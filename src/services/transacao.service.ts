@@ -50,9 +50,13 @@ class TransacaoService {
     const saldo = await this.transacaoRepository.calculaSaldo(conta.id);
     const limite = conta.limite;
 
-    console.log(saldo, -limite);
+    console.log('saldo', saldo);
+    console.log('valor', valor);
+    console.log('limite', limite);
+    console.log('(saldo - valor)', saldo - valor);
+    console.log('(saldo - valor <= -limite)', saldo - valor <= -limite);
 
-    if (saldo - valor <= -limite) {
+    if (saldo + valor <= -limite) {
       return false;
     }
     return true;

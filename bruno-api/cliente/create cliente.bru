@@ -1,0 +1,21 @@
+meta {
+  name: create cliente
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{url}}/clientes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "Teste Cliente",
+    "cpf": "123.456.789-13",
+    "data_nascimento": "1985-05-15T00:00:00.000Z",
+    "renda_estimada": 999
+  }
+  
+}

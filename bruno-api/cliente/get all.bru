@@ -1,0 +1,18 @@
+meta {
+  name: get all
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{url}}/clientes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "cliente_id": 3,
+    "limite": 300000
+  }
+}
