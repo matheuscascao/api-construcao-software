@@ -44,7 +44,7 @@ Além disso, o sistema registra de forma precisa todas as transações financeir
 http://localhost:3100
 ### Clientes ###  
 
-*Get - FindAll - /clientes
+* Get - FindAll - /clientes
 Retorno: [
 	{
 		"id": ,
