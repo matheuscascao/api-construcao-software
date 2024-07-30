@@ -45,12 +45,13 @@ http://localhost:3100
 ### Clientes ###  
 
 * Get - FindAll - /clientes
-Retorno: [
-	{
-		"id": ,
-		"cpf": "",
-		"renda_estimada": 
-		"nome": ,
-		"data_nascimento": 
-	},
-]
+
+	Retorno: [
+		{
+			"id": ,
+			"cpf": "",
+			"renda_estimada": 
+			"nome": ,
+			"data_nascimento": 
+		},
+	]
