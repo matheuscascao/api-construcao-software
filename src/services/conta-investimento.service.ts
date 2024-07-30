@@ -284,7 +284,7 @@ class ContaInvestimentoService {
   }
   public async update(
     id: number,
-    data: Partial<Omit<ContaInvestimento, 'criado_em' | 'atualizado_em'>>
+    data: Partial<Pick<ContaInvestimento, 'tipo_investidor'>>
   ): Promise<ContaInvestimento | null> {
     const result = await this.ContaInvestimentoRepository.update(id, data);
     return result;

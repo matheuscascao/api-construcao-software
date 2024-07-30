@@ -88,12 +88,10 @@ export async function contaInvestimentoRoutes(fastify: FastifyInstance) {
     };
   }>('/:id', async (req, reply) => {
     const { id } = req.params;
-    const { tipo_investidor, cliente_id, conta_corrente_id } = req.body;
+    const { tipo_investidor } = req.body;
     try {
       const data = await contaInvestimentoService.update(Number(id), {
         tipo_investidor,
-        cliente_id,
-        conta_corrente_id,
       });
       return reply.send(data);
     } catch (error) {

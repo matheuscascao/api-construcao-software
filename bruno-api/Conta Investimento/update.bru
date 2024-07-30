@@ -1,0 +1,19 @@
+meta {
+  name: update
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{url}}/contas-investimentos
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "cliente_id": 1,
+    "conta_corrente_id": 9,
+    "tipo_investidor": "QUALIFICADO"
+  }
+}

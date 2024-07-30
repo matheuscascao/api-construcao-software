@@ -34,12 +34,7 @@ class ContaInvestimentoRepository {
 
   async update(
     id: number,
-    data: Partial<
-      Pick<
-        ContaInvestimento,
-        'tipo_investidor' | 'cliente_id' | 'conta_corrente_id'
-      >
-    >
+    data: Partial<Pick<ContaInvestimento, 'tipo_investidor'>>
   ): Promise<ContaInvestimento | null> {
     const result = await prisma.contaInvestimento.update({
       where: { id },

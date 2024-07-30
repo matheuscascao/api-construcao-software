@@ -1,0 +1,18 @@
+meta {
+  name: update
+  type: http
+  seq: 8
+}
+
+patch {
+  url: {{url}}/contas-correntes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "cliente_id": 6,
+    "limite": 300000
+  }
+}
