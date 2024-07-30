@@ -27,8 +27,6 @@ Além disso, o sistema registra de forma precisa todas as transações financeir
 
 ## [Historias de Usuario](arquivosDocumentacao/Histórias de usuário.pdf)
 
-## ![Diagrama De Classes](arquivosDocumentacao/DiagramaDeClasse.JPG)
-
 ## Estratégia de controle de versão
 *Ferramenta Utilizada:* Git
 *Repositório:* GitHub
