@@ -46,12 +46,282 @@ http://localhost:3100
 
 * Get - FindAll - /clientes
 
-	Retorno: [
-		{
+
+	Retorno:
+
+  		[	
+			{
 			"id": ,
 			"cpf": "",
-			"renda_estimada": 
+			"renda_estimada":
 			"nome": ,
-			"data_nascimento": 
-		},
-	]
+			"data_nascimento":
+			},
+		]
+* Get - Index - /clientes/:id
+
+	Retorno:
+
+		{
+			"id": 5,
+			"cpf": "123.456.789-05",
+			"renda_estimada": 12000,
+			"nome": "mario",
+			"data_nascimento": "2003-09-13T00:00:00.000Z"
+		}
+* Post - Create - /clientes
+
+	Envio:
+
+		{
+		  "nome": "Elias batista",
+		  "cpf": "123.456.789-08",
+		  "data_nascimento": "2000-09-13T00:00:00.000Z",
+		  "renda_estimada": 12000.00
+		}
+
+
+	Retorno:
+
+		{
+			"id": 7,
+			"cpf": "123.456.789-08",
+			"renda_estimada": 12000,
+			"nome": "Elias batista",
+			"data_nascimento": "2000-09-13T00:00:00.000Z"
+		}
+
+  ### Conta-Corrente ###  
+
+* Get - index-transacoes - /contas-correntes/:id/transacoes
+
+	Retorno:
+
+  		[
+			{
+			"id": 26,
+			"valor": -10,
+			"evento_transacao": "SAQUE_CORRENTE",
+			"conta_corrente_id": 9,
+			"atualizado_em": "2024-07-26T21:25:24.640Z",
+			"criado_em": "2024-07-26T21:25:24.640Z",
+			"tipo_transacao": "SAIDA"
+			},
+  		]
+* Get - Index - /contas-correntes/:id
+
+	Retorno:
+
+		{
+			"id": 12,
+			"status_conta": "ATIVA",
+			"limite": 5000,
+			"atualizado_em": "2024-07-26T21:07:52.599Z",
+			"criado_em": "2024-07-26T21:07:52.599Z",
+			"cliente_id": 5,
+			"saldo": 630011
+		}
+* Get - FindAll - /contas-correntes/
+
+	Retorno:
+
+		[
+			{
+			"id": 9,
+			"status_conta": "ATIVA",
+			"limite": 30000,
+			"atualizado_em": "2024-07-17T01:18:18.483Z",
+			"criado_em": "2024-07-17T01:18:18.483Z",
+			"cliente_id": 1
+			},
+  		]
+  
+* Post - create-transacao - /contas-correntes/transferir
+
+  	Envio:
+  
+  		{
+			"contaOrigemId": 9,
+			"contaDestinoId": 11,
+			"valor": 10
+		}
+  
+	Retorno:
+
+		{
+			"message": "Transfer completed successfully"
+		}
+  
+* Post - create-conta-corrente - /contas-correntes/
+
+  	Envio:
+  
+  		{
+		  "cliente_id": 5,
+		  "limite": 5000
+		}
+  
+	Retorno:
+
+		{
+			"id": 12,
+			"status_conta": "ATIVA",
+			"limite": 5000,
+			"atualizado_em": "2024-07-26T21:07:52.599Z",
+			"criado_em": "2024-07-26T21:07:52.599Z",
+			"cliente_id": 5
+		}
+  
+  ### Conta-Investimento ###  
+
+* Get - Index - /contas-investimentos/:id
+
+	Retorno:
+
+		{
+			"id": 2,
+			"status_conta": "ATIVA",
+			"tipo_investidor": "QUALIFICADO",
+			"atualizado_em": "2024-07-25T23:55:38.261Z",
+			"criado_em": "2024-07-25T23:55:38.261Z",
+			"cliente_id": 1,
+			"conta_corrente_id": 9,
+			"retornoTotalAtual": {
+				"computadoTransacoesPendentes": 0,
+				"computadoTransacoesResgatadas": 4000
+			}
+		}
+* Get - FindAll - /contas-investimentos/
+
+	Retorno:
+
+		[
+			{
+				"id": 2,
+				"status_conta": "ATIVA",
+				"tipo_investidor": "QUALIFICADO",
+				"atualizado_em": "2024-07-25T23:55:38.261Z",
+				"criado_em": "2024-07-25T23:55:38.261Z",
+				"cliente_id": 1,
+				"conta_corrente_id": 9
+			},
+		]
+  
+* Post - create-investimento - /contas-investimentos/aplica-investimento
+
+  	Envio:
+  
+  		{
+			"conta_investimento_id": 2 ,
+			"produto_financeiro_id": 2,
+			"quantidade": 1
+		}
+  
+	Retorno:
+
+		Investimento aplicado com sucesso
+  
+* Post - create-conta-corrente - /contas-investimentos/
+
+  	Envio:
+  
+  		{
+			"cliente_id": 3,
+			"tipo_investidor": "NORMAL",
+			"conta_corrente_id": 12
+		}
+  
+	Retorno:
+
+		{
+			"id": 4,
+			"status_conta": "ATIVA",
+			"tipo_investidor": "NORMAL",
+			"atualizado_em": "2024-07-26T21:46:46.275Z",
+			"criado_em": "2024-07-26T21:46:46.275Z",
+			"cliente_id": 3,
+			"conta_corrente_id": 12
+		}
+   	
+  ### Produto-Financeiro ###  
+
+* Get - Index - /produtos-financeiros/:id
+
+	Retorno:
+
+		{
+			"id": 2,
+			"preco_unitario": 12.5,
+			"data_resgate": "2024-07-26T21:59:44.076Z",
+			"emissor": "meu banco",
+			"quantidade_cotas": 1000,
+			"atualizado_em": "2024-07-26T22:04:45.699Z",
+			"criado_em": "2024-07-26T22:04:45.699Z",
+			"rentabilidade_anual": 12
+		}
+  
+* Get - FindAll - /produtos-financeiros
+
+	Retorno:
+
+		[
+			{
+				"id": 1,
+				"preco_unitario": 1000,
+				"data_resgate": "2023-07-26T14:30:00.000Z",
+				"emissor": "BACEN",
+				"quantidade_cotas": 1,
+				"atualizado_em": "2024-07-24T02:31:02.027Z",
+				"criado_em": "2024-07-24T02:31:02.027Z",
+				"rentabilidade_anual": 13
+			},
+		]
+  
+* Post - create-produto-financeiro - /produtos-financeiros
+
+  	Envio:
+  
+  		{
+		    "preco_unitario": 12.5,
+		    "data_resgate": "2024-07-26T21:59:44.076Z",
+		    "emissor": "meu banco",
+		    "quantidade_cotas": 1000,
+		    "rentabilidade_anual": 12
+		}
+  
+	Retorno:
+
+		{
+			"id": 2,
+			"preco_unitario": 12.5,
+			"data_resgate": "2024-07-26T21:59:44.076Z",
+			"emissor": "meu banco",
+			"quantidade_cotas": 1000,
+			"atualizado_em": "2024-07-26T22:04:45.699Z",
+			"criado_em": "2024-07-26T22:04:45.699Z",
+			"rentabilidade_anual": 12
+		}
+
+   ### Transações ###  
+
+* Post - Create - /produtos-financeiros/:id
+
+  	Envio: 
+
+		{
+			"conta_corrente_id": 9,
+			"valor": -1500,
+			"evento_transacao": "DEPOSITO_CORRENTE"
+		}
+
+	Retorno:
+
+		{
+			"id": 8,
+			"valor": -1500,
+			"tipo_transacao": "SAIDA",
+			"evento_transacao": "DEPOSITO_CORRENTE",
+			"conta_corrente_id": 9,
+			"criado_em": "2024-07-18T02:51:10.893Z",
+			"atualizado_em": "2024-07-18T02:51:10.893Z"
+		}
